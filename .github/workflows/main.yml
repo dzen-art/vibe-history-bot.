@@ -2,18 +2,18 @@ name: Daily Vibe Update
 
 on:
   schedule:
-    - cron: '0 6 * * *' # Запуск каждый день в 6:00 утра
-  workflow_dispatch: # Чтобы можно было запустить вручную кнопкой
+    - cron: '0 6 * * *'
+  workflow_dispatch:
 
 jobs:
   build:
     runs-on: ubuntu-latest
     steps:
       - name: Checkout code
-        uses: actions/checkout@v2
+        uses: actions/checkout@v4 # Обновили версию
 
       - name: Set up Python
-        uses: actions/setup-python@v2
+        uses: actions/setup-python@v5 # Обновили версию
         with:
           python-version: '3.9'
 
@@ -25,4 +25,3 @@ jobs:
           GEMINI_KEY: ${{ secrets.GEMINI_KEY }}
           FIREBASE_KEY: ${{ secrets.FIREBASE_KEY }}
         run: python bot.py
-        
