@@ -36,7 +36,7 @@ try:
     events = [e for e in page.section_by_title('События').text.split('\n') if len(e) > 30]
     event = random.choice(events)
 
-    prompt = f"Сделай хайповый пост и квиз для этого события: {event}"
+    prompt = f"Расскажи об одном интересном историческом событии, которое произошло сегодня. Напиши это в стиле крутого поста для соцсетей, используй эмодзи. Не пиши никаких пояснений, только сам факт. И квиз для этого события: {event}"
     response = model.generate_content(prompt)
     
     db.reference('daily_fact').set({
